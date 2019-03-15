@@ -1,0 +1,48 @@
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	        <div class="alert alert-success alert-dismissable animated fadeIn">
+	            {% for message in messages %}
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	            <p class="h4"><strong>{{ message }}</strong></p>
+	            {% endfor %}
+	        </div>
+	{% endif %}	    
+{% endwith %}
+{% if 'username' in session %}
+<button type="button" class="btn btn-warning" style="margin: 5px 0px 5px 25px; border-radius:15px 50px 30px"><a href="{{url_for('addItemDetails',itname=its.name)}}" ><strong>Add new Item</strong></a></button>
+
+{% endif %}
+<div class="row" style="margin: 10px;">
+{% for ite in i_nam %}
+
+	<div class="col-sm-4 text-center " >
+		<div class="panel panel-primary" style="border:none;background-color:	whitesmoke">
+			<div class="panel-heading" style="border-radius:15px;background-color:#009999;color:black;
+			font-family:Comic Sans MS;font-style:italic">
+				<h4>{{ ite.itemname }}</h4>
+			</div>
+			<div class="panel-body text-center" style="border-radius:15px;background-color:#b82e8a;font-style:oblique;color:white;" >
+				<table>
+					<tr><th>ItemName</th><td>:&nbsp;&nbsp;&nbsp;</td><td><h5>{{ ite.itemname }}</h5></td></tr>
+					<tr><th>Brand</th><td>:</td><td><h5>{{ ite.brand }}</h5></td></tr>
+					<tr><th>Rating</th><td>:</td><td><h5>{{ ite.rating }}</h5></td></tr>
+					<tr><th>Packing</th><td>:</td><td><h5>{{ ite.packing }}</h5></td></tr>
+					<tr><th>Price</th><td>:</td><td><h5>{{ ite.price }}</h5></td></tr>
+				</table>
+			</div>
+			{% if 'username' in session %}
+			<div class="panel-footer" style="border-radius:15px;background-color:#009999">
+					<button type="button" class="btn btn-info"style="background-color:#999966;border-radius:15px 50px 30px"><a href="{{ url_for('editItem',itid=its.id,itemname=ite.itemname) }}"style="text-decoration: none;color:black;">Edit</a></button>
+					<button type="button" class="btn btn-danger" style="background-color:#E05E51;border-radius:15px 50px 30px"><a href="{{ url_for('deleteItem',itid=its.id,itename=ite.itemname)}}"style="text-decoration: none;color:white;">Delete</a></button>
+			</div>
+			{% endif %}	
+			
+		</div>
+	</div>
+{% endfor %}
+</div>
+{% endblock content %}
+</div>

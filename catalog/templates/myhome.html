@@ -1,0 +1,53 @@
+<head>
+<title>CreamyCorner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+<div class="w3-content w3-section" style="max-width:750px;">
+  <img class="mySlides w3-animate-zoom" src="https://i2.wp.com/media.hungryforever.com/wp-content/uploads/2015/05/Nice-Ice-Cream-Wallpaper.jpg?ssl=1?w=356&strip=all&quality=80" >
+  <img class="mySlides w3-animate-zoom" src="https://im1.dineout.co.in/images/uploads/restaurant/sharpen/5/g/d/p596-1501922664598585688d71d.jpg?w=1200" >
+  <img class="mySlides w3-animate-zoom" src="https://www.tillamook.com/image/2449/b24/0.5,0.5" >
+  
+  
+</div>
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+  <!-- {% for it in cat_names %}
+    <a href="{{ url_for('showCategory',itid=it.id)}}">{{it.name}}</a><br>
+    {% endfor %} -->
+    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <div class="alert alert-success alert-dismissable animated fadeIn">
+	            {% for message in messages %}
+	            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	            <p class="h4"><strong>{{ message }}</strong></p>
+	            {% endfor %}
+	        </div>
+	    {% endif %}
+	{% endwith %}
+
+	<!--<div class="text-center">
+		<!-- <h1>Welcome to CreamyCorner</h1> --
+		<img style="width: 950px; height: 550px; margin: 0;padding: 0; margin-top: 50px" src="https://media.timeout.com/images/100454023/image.jpg">
+	</div>-->
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 3000);    
+}
+</script>
+{% endblock content %}
+</div>
+</body>

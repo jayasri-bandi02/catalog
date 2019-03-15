@@ -1,0 +1,42 @@
+{% include 'nav.html' %}
+<div class="main">
+{% block content %}
+
+<div class="">
+		<div class="mr-sm-2 mb-2 col-sm-8" style="margin: 10px;">
+			<form action="{{ url_for('addItemDetails',itname=itname)}}" method="POST">
+				<div class="panel panel-primary">
+				  <div class="panel-heading bg-success" style="background:black;">Add Item Details</div>
+				  <div class="panel-body"  >
+				  	
+					  <div class="form-group">
+					  	<label class="text-primary" for="itemname">Enter item name:</label>
+					    <input type="text" class="form-control" name="itemname" placeholder="Enter Item Name:" pattern="[A-Za-z0-9- ]{1,}" title="Allow both characters and numbers only" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="brand">Enter brand:</label>
+					    <input type="text" class="form-control" name="brand" placeholder="Enter brand:" pattern="[A-Za-z0-9 ]{1,}" title="Allow Characters Only" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="rating">Enter rating:</label>
+					    <input type="text" class="form-control" name="rating" placeholder="Enter rating:" pattern="[A-Za-z0-9. ]{1,}" title="Allow both characters and numbers only" required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="packing">Enter packing:</label>
+					    <input type="text" class="form-control" name="packing" placeholder="Enter item packing:" pattern="[A-Za-z0-9. ]{1,}" title="Allow both characters and numbers only " required>
+					  </div>
+					  <div class="form-group">
+					  	<label class="text-primary" for="price">Enter Price:</label>
+					    <input type="text" class="form-control" name="price" placeholder="Enter Price:" pattern="[A-Za-z0-9. ]{1,}" title="Allow characters and numbers Only" required>
+					  </div>
+					  
+					  <div class="form-group">
+					    <input type="text" class="form-control " name="categorynameid" value="{{ itname }}" readonly>
+					  </div>
+				  </div> 
+				  <div class="panel-footer text-center"><input type="submit" class="btn btn-primary" style="background:#2F4F4F" value="Submit"></div>
+				</div>
+				</form>
+			</div>
+</div>
+{% endblock content %}
